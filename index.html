@@ -629,7 +629,7 @@ function cargarNuevaBase(inp){
       window._nuevaBaseBytes=data;
       id('si-cnt').textContent=totalSI();
       id('si-num').textContent=totalSI();
-      populateCoords(); renderAdministración();
+      populateCoords(); renderADMINISTRACIÓN();
       alert(modoCambio==='reset'
         ? 'Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones reiniciadas.'
         : 'Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones conservadas: '+totalSI()+'.');
