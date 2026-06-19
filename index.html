@@ -617,6 +617,7 @@ function cargarNuevaBase(inp){
       }
       if(modoCambio==='reset'){
         estado={};
+        sbFetch('/rest/v1/validaciones?cedula=neq.null',{method:'DELETE'});
       } else {
         var ne={};
         Object.keys(estado).forEach(function(c){ if(nDB[c]) ne[c]=estado[c]; });
