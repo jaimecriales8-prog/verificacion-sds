@@ -640,7 +640,10 @@ function cargarNuevaBase(inp){
 </script>
 <div class="modal-overlay" id="modal-base">
   <div class="modal-box">
-    <div class="modal-title">&#128196; Cambiar base de datos</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <div class="modal-title" style="margin-bottom:0">&#128196; Cambiar base de datos</div>
+      <button onclick="document.getElementById('modal-base').classList.remove('show')" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--t3);line-height:1;padding:0 4px">&times;</button>
+    </div>
     <div class="modal-sub">Selecciona cómo quieres cargar la nueva base:</div>
     <div class="modal-opts">
       <button class="modal-opt" id="opt-mantener" onclick="selOpt('mantener')">
