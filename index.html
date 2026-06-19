@@ -666,7 +666,10 @@ function cargarNuevaBase(inp){
     </div>
     <div class="modal-actions">
       <button class="modal-cancel" id="modal-cancel">Cancelar</button>
-      <label class="modal-confirm rdy" id="modal-confirm" for="fi-nueva-base" style="display:flex;align-items:center;justify-content:center;cursor:pointer">Seleccionar archivo</label>
+      <label class="modal-confirm rdy" id="modal-confirm" style="display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden">
+        Seleccionar archivo
+        <input type="file" id="fi-nueva-base" accept=".xlsx,.xls" style="position:absolute;opacity:0;left:0;top:0;width:100%;height:100%;cursor:pointer">
+      </label>
     </div>
   </div>
 </div>
