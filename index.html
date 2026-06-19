@@ -629,10 +629,11 @@ function cargarNuevaBase(inp){
       id('si-cnt').textContent=totalSI();
       id('si-num').textContent=totalSI();
       populateCoords(); renderADMINISTRACIÓN();
-      alert(modoCambio==='reset'
-        ? 'Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones reiniciadas.'
-        : 'Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones conservadas: '+totalSI()+'.');
-    }catch(err){ alert('Error: '+err.message); }
+      var msg=modoCambio==='reset'
+        ? '&#10003; Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones reiniciadas.'
+        : '&#10003; Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones conservadas: '+totalSI()+'.';
+      showAlert('ok', msg);
+    }catch(err){ showAlert('er','Error: '+err.message); }
   };
   r.readAsArrayBuffer(f);
 }
