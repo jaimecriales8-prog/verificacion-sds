@@ -187,6 +187,7 @@ tr:hover td{background:var(--gl)}
       <div style="display:-webkit-flex;display:flex;gap:8px;-webkit-flex-wrap:wrap;flex-wrap:wrap">
         <button class="btn btn-sm" id="btn-toggle-val">&#9889; Apagar validación</button>
         <button class="btn btn-sm btn-cambiar" id="btn-cambiar-base">&#128196; Cambiar base</button>
+        <span id="base-status" style="font-size:11px;color:var(--t3);align-self:center;padding:0 4px"></span>
         <button class="blko" id="btn-bloquear">&#128274; Bloquear</button>
       </div>
     </div>
@@ -629,6 +630,9 @@ function cargarNuevaBase(inp){
       id('si-cnt').textContent=totalSI();
       id('si-num').textContent=totalSI();
       populateCoords(); renderADMINISTRACIÓN();
+      var now=new Date(); var h=now.getHours(); var m=String(now.getMinutes()).padStart(2,'0');
+      id('base-status').textContent='Base actualizada '+h+':'+m+' — '+RAW.length.toLocaleString()+' ejecutores';
+      id('base-status').style.color='var(--vd)';
       var msg=modoCambio==='reset'
         ? '&#10003; Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones reiniciadas.'
         : '&#10003; Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones conservadas: '+totalSI()+'.';
