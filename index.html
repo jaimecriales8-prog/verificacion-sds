@@ -576,12 +576,12 @@ id('btn-cambiar-base').addEventListener('click', function(){
 });
 id('modal-cancel').addEventListener('click', function(){ id('modal-base').classList.remove('show'); });
 id('modal-base').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('show'); });
-function handleConfirm(){
-  if(!modoCambio) return false;
+id('modal-confirm').addEventListener('click', function(){
+  if(!modoCambio) return;
   id('fi-nueva-base').value='';
+  id('fi-nueva-base').click();
   id('modal-base').classList.remove('show');
-  return true;
-}
+});
 id('fi-nueva-base').addEventListener('change', function(){ cargarNuevaBase(this); });
 function selOpt(opt){
   modoCambio=opt;
@@ -658,7 +658,7 @@ function cargarNuevaBase(inp){
     </div>
     <div class="modal-actions">
       <button class="modal-cancel" id="modal-cancel">Cancelar</button>
-      <label class="modal-confirm" id="modal-confirm" for="fi-nueva-base" onclick="return handleConfirm()">Seleccionar archivo</label>
+      <button class="modal-confirm" id="modal-confirm">Seleccionar archivo</button>
     </div>
   </div>
 </div>
