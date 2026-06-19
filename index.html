@@ -599,7 +599,7 @@ function cargarNuevaBase(inp){
       var hdr=rows[0];
       var iC=hdr.indexOf('CEDULA'),iN=hdr.indexOf('NOMBRES COMPLETOS');
       var iA=hdr.indexOf('APELLIDOS COMPLETO'),iR=hdr.indexOf('ROL');
-      if(iC<0||iR<0){ alert('El archivo no tiene el formato esperado.'); return; }
+      if(iC<0||iR<0){ showAlert('er','Formato no reconocido. Columnas encontradas: '+hdr.slice(0,8).join(', ')); return; }
       var nRAW=[],nDB={},cc='',cl='',ri=0;
       for(var i=1;i<rows.length;i++){
         var row=rows[i];
