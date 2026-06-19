@@ -191,6 +191,7 @@ tr:hover td{background:var(--gl)}
         <button class="blko" id="btn-bloquear">&#128274; Bloquear</button>
       </div>
     </div>
+    <div id="alert-box-admin"></div>
     <div id="stats-top" class="stats"></div>
     <div class="dlbar">
       <span id="si-cnt" style="display:none">0</span>
@@ -450,6 +451,10 @@ function aplicar(ced,val){
 function clrAlert(){ id('alert-box').innerHTML=''; }
 function clrResult(){ id('result-box').innerHTML=''; pCed=null; }
 function clrAj(){ id('ajuste-box').innerHTML=''; }
+function showAdminAlert(t,msg){
+  id('alert-box-admin').innerHTML='<div class="al '+(t==='ok'?'aok':'aer')+'">'+msg+'</div>';
+  setTimeout(function(){ id('alert-box-admin').innerHTML=''; },4000);
+}
 function showAlert(t,msg){
   id('alert-box').innerHTML='<div class="al '+(t==='ok'?'aok':'aer')+'">'+msg+'</div>';
   if(t==='ok') setTimeout(clrAlert,3000);
@@ -600,7 +605,7 @@ function cargarNuevaBase(inp){
       var hdr=rows[0];
       var iC=hdr.indexOf('CEDULA'),iN=hdr.indexOf('NOMBRES COMPLETOS');
       var iA=hdr.indexOf('APELLIDOS COMPLETO'),iR=hdr.indexOf('ROL');
-      if(iC<0||iR<0){ showAlert('er','Formato no reconocido. Columnas encontradas: '+hdr.slice(0,8).join(', ')); return; }
+      if(iC<0||iR<0){ showAdminAlert('er','Formato no reconocido. Columnas: '+hdr.slice(0,8).join(', ')); return; }
       var nRAW=[],nDB={},cc='',cl='',ri=0;
       for(var i=1;i<rows.length;i++){
         var row=rows[i];
@@ -636,8 +641,8 @@ function cargarNuevaBase(inp){
       var msg=modoCambio==='reset'
         ? '&#10003; Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones reiniciadas.'
         : '&#10003; Base actualizada: '+RAW.length.toLocaleString()+' ejecutores. Validaciones conservadas: '+totalSI()+'.';
-      showAlert('ok', msg);
-    }catch(err){ showAlert('er','Error: '+err.message); }
+      showAdminAlert('ok', msg);
+    }catch(err){ showAdminAlert('er','Error: '+err.message); }
   };
   r.readAsArrayBuffer(f);
 }
