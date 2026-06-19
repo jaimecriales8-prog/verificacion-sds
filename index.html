@@ -576,13 +576,11 @@ id('btn-cambiar-base').addEventListener('click', function(){
 });
 id('modal-cancel').addEventListener('click', function(){ id('modal-base').classList.remove('show'); });
 id('modal-base').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('show'); });
-id('modal-confirm').addEventListener('click', function(){
-  if(!modoCambio) return;
-  id('fi-nueva-base').value='';
-  id('fi-nueva-base').click();
+id('fi-nueva-base').addEventListener('change', function(){
+  if(!modoCambio){ this.value=''; showAlert('er','Selecciona primero una opción.'); return; }
   id('modal-base').classList.remove('show');
+  cargarNuevaBase(this);
 });
-id('fi-nueva-base').addEventListener('change', function(){ cargarNuevaBase(this); });
 function selOpt(opt){
   modoCambio=opt;
   document.querySelectorAll('.modal-opt').forEach(function(o){ o.classList.remove('selected'); });
@@ -658,7 +656,7 @@ function cargarNuevaBase(inp){
     </div>
     <div class="modal-actions">
       <button class="modal-cancel" id="modal-cancel">Cancelar</button>
-      <button class="modal-confirm" id="modal-confirm">Seleccionar archivo</button>
+      <label class="modal-confirm rdy" id="modal-confirm" for="fi-nueva-base" style="display:flex;align-items:center;justify-content:center;cursor:pointer">Seleccionar archivo</label>
     </div>
   </div>
 </div>
