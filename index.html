@@ -580,7 +580,7 @@ id('modal-confirm').addEventListener('click', function(){
   if(!modoCambio) return;
   id('modal-base').classList.remove('show');
   id('fi-nueva-base').value='';
-  id('fi-nueva-base').click();
+  setTimeout(function(){ id('fi-nueva-base').click(); }, 100);
 });
 id('fi-nueva-base').addEventListener('change', function(){ cargarNuevaBase(this); });
 function selOpt(opt){
